@@ -1,0 +1,47 @@
+
+> hackerearth-v4-node@1.0.0 test D:\PersonalProjects\HackerEarth-V4-Node
+> mocha ./test/unit_tests.js
+
+
+
+  execute function using callback
+    passing client secret during initialization & passing source string only during execute
+      √ should return a 200 OK response & should have a he_id (1374ms)
+    passing client secret during initialization; passing source string & language during execute
+      √ should return a 200 OK response & should have a he_id (697ms)
+    passing client secret during initialization; passing source string, lang, memory_limit,time_limit,input, callbackURL during execute
+      √ should return a 200 OK response & should have a he_id (904ms)
+    passing client secret during initialization; passing source string (this time C++), lang, memory_limit,time_limit,input, callbackURL during execute
+      √ should return a 200 OK response & should have a he_id (690ms)
+    passing client secret during initialization; passing source file ( C++), lang, memory_limit,time_limit,input file (txt), callbackURL during execute
+      √ should return a 200 OK response & should have a he_id (712ms)
+    passing client secret,lang, memory_limit,time_limit, callbackURL during initialization; passing source string (this time C++),input during execute
+      √ should return a 200 OK response & should have a he_id (703ms)
+    NOT passing client secret during initialization; passing source string, lang, memory_limit,time_limit,input, callbackURL during execute
+      √ should return a 200 OK response & should have a he_id (754ms)
+
+  execute function using promise
+    passing client secret during initialization; passing source string, lang, memory_limit,time_limit,input, callbackURL during execute
+      √ should return a 200 OK response & should have a he_id (953ms)
+
+  get_status function using callback
+    √ should return a 200 OK response & should have a he_id (980ms)
+
+  get_status function using promise
+    √ should return a 200 OK response & should have a he_id (1111ms)
+
+  get_output function using callback
+    json output
+      √ should return a 200 OK response & should have response.data (645ms)
+    stream output
+      √ should return a 200 OK response & since response.data is stream, should be able to save to file (575ms)
+
+  get_output function using promise
+    json output
+      √ should return a 200 OK response & should have response.data (575ms)
+    stream output
+      √ should return a 200 OK response & since response.data is stream, should be able to save to file (553ms)
+
+
+  14 passing (11s)
+
