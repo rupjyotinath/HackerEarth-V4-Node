@@ -137,7 +137,7 @@ HE.execute(config)
 
 The config is an object in which the following properties can be passed: source, lang, input, memory_limit, time_limit, context & callbackURL . *The meaning of these are self explanatory or can be found in HE API docs.*
 
-The library does not check for source parameter & will still make a request even without it. It also does not check for the supported programming language as new language may be added later. It is the developer's responsibility to supply proper lang & source (or any other parameters) to avoid wastage of API usage.
+The library does not check for the supported programming language. It is the developer's responsibility to supply proper lang (or any other parameter) to avoid wastage of API usage.
 
 **Any value that is passed in execute method will be used while making API request rather than the default values set during initialization**, however, the defaults will not be replaced. So, further execute calls without some config values will use the defaults.
 
@@ -349,7 +349,7 @@ if (error.response) {
       console.log('Error', error.message);
     }
 ```
-**Note that any status code outside 2XX will result in an error.** Example: if the source is not provided, 400 code will be sent by HackerEarth & should be handled in error handling part. The library does not check for source parameter & will still make a request. 
+**Note that any status code outside 2XX will result in an error.** Example: if the language is not supported by HE, 400 code will be sent by HackerEarth & should be handled in error handling part.  
 
 ## Credits
 [axios](https://www.npmjs.com/package/axios)- Promise based HTTP client for the browser and node.js
