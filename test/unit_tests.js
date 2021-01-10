@@ -77,6 +77,31 @@ describe('execute function using callback',function () {
         })      
     });
 
+    describe('passing client secret during initialization; passing source string, lang, memory_limit,time_limit,input, context during execute',function () {
+        this.timeout(timeout);
+        it("should return a 200 OK response & should have a context",function (done) {
+            const HE = new HackerEarth({'clientSecret':clientSecret});
+            const source="console.log('Hello HackerEarth')";
+            HE.execute({
+                source:source,
+                lang:'JAVASCRIPT_NODE',
+                input:'',
+                memory_limit:10000,
+                time_limit:2,
+                context:'hackerearth-v4-node'
+                },(err,response)=>{
+                if(err){
+                    done(err);
+                }
+                else{
+                    assert.equal(200,response.status);
+                    assert.equal('hackerearth-v4-node',response.data.context,"response data should have context 'hackerearth-v4-node'");
+                    done();
+                }
+            })
+        })      
+    });
+
     describe('passing client secret during initialization; passing source string (this time C++), lang, memory_limit,time_limit,input, callbackURL during execute',function () {
         this.timeout(timeout);
         it("should return a 200 OK response & should have a he_id",function (done) {
