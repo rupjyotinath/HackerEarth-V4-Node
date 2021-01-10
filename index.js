@@ -24,6 +24,9 @@ class HackerEarth{
         if(callbackURL){
             data.callback=callbackURL;
         }
+        if(params.context){
+            data.context=params.context;
+        }
 
         const config={};
         config.url=this.CODE_EVALUATION_URL;
