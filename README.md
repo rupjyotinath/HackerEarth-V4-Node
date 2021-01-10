@@ -137,6 +137,8 @@ HE.execute(config)
 
 The config is an object in which the following properties can be passed: source, lang, input, memory_limit, time_limit, context & callbackURL . *The meaning of these are self explanatory or can be found in HE API docs.*
 
+The library does not check for source parameter & will still make a request even without it. It also does not check for the supported programming language as new language may be added later. It is the developer's responsibility to supply proper lang & source (or any other parameters) to avoid wastage of API usage.
+
 **Any value that is passed in execute method will be used while making API request rather than the default values set during initialization**, however, the defaults will not be replaced. So, further execute calls without some config values will use the defaults.
 
 Here is an example of config object,
@@ -327,6 +329,27 @@ Here is a response taken from HackerEarth, it is the **response.data** that you 
 }
 ```
 
+### Understanding errors
+As mentioned above, axios is used for requests. Apart from other error, axios errors can be handled as shown below,
+
+```javascript
+if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
+    }
+```
+**Note that any status code outside 2XX will result in an error.** Example: if the source is not provided, 400 code will be sent by HackerEarth & should be handled in error handling part. The library does not check for source parameter & will still make a request. 
 
 ## Credits
 [axios](https://www.npmjs.com/package/axios)- Promise based HTTP client for the browser and node.js
